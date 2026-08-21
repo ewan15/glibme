@@ -4,21 +4,21 @@ project(
   glibme
   VERSION 0.1.0
   DESCRIPTION "A small libc-style learning library"
-  LANGUAGES C
+  LANGUAGES CXX
 )
 
 option(GLIBME_BUILD_TESTS "Build glibme tests" ON)
 option(GLIBME_BUILD_SHARED "Build a shared glibme library" ON)
 
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_C_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(GNUInstallDirs)
 
 set(GLIBME_SOURCES
-  src/ctype.c
-  src/string.c
+  src/ctype.cpp
+  src/string.cpp
 )
 
 add_library(glibme_static STATIC ${GLIBME_SOURCES})
@@ -36,7 +36,7 @@ target_include_directories(glibme_static
 
 target_compile_options(glibme_static
   PRIVATE
-    $<$<C_COMPILER_ID:AppleClang,Clang,GNU>:-Wall -Wextra -Wpedantic>
+    $<$<CXX_COMPILER_ID:AppleClang,Clang,GNU>:-Wall -Wextra -Wpedantic>
 )
 
 if(GLIBME_BUILD_SHARED)
@@ -57,13 +57,13 @@ if(GLIBME_BUILD_SHARED)
 
   target_compile_options(glibme_shared
     PRIVATE
-      $<$<C_COMPILER_ID:AppleClang,Clang,GNU>:-Wall -Wextra -Wpedantic>
+      $<$<CXX_COMPILER_ID:AppleClang,Clang,GNU>:-Wall -Wextra -Wpedantic>
   )
 endif()
 
 if(GLIBME_BUILD_TESTS)
   enable_testing()
-  add_executable(glibme_tests tests/test_glibme.c)
+  add_executable(glibme_tests tests/test_glibme.cpp)
   target_link_libraries(glibme_tests PRIVATE glibme::static)
   add_test(NAME glibme_tests COMMAND glibme_tests)
 endif()

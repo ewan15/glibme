@@ -1,6 +1,6 @@
 # glibme
 
-A small project for learning how glibc works by implementing libc-style
+A small C++ project for learning how glibc works by implementing libc-style
 functions from scratch.
 
 ## Building

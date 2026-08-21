@@ -1,33 +1,34 @@
-#include "glibme.h"
+#include "glibme.hpp"
 
-int glibme_isalpha(int c)
+namespace glibme {
+
+bool isalpha(int c)
 {
   return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 }
 
-int glibme_isdigit(int c)
+bool isdigit(int c)
 {
   return c >= '0' && c <= '9';
 }
 
-int glibme_isalnum(int c)
+bool isalnum(int c)
 {
-  return glibme_isalpha(c) || glibme_isdigit(c);
+  return isalpha(c) || isdigit(c);
 }
 
-int glibme_isspace(int c)
+bool isspace(int c)
 {
   return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' ||
          c == '\v';
 }
 
-int glibme_isxdigit(int c)
+bool isxdigit(int c)
 {
-  return glibme_isdigit(c) || (c >= 'A' && c <= 'F') ||
-         (c >= 'a' && c <= 'f');
+  return isdigit(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
 }
 
-int glibme_tolower(int c)
+int tolower(int c)
 {
   if (c >= 'A' && c <= 'Z') {
     return c + ('a' - 'A');
@@ -36,7 +37,7 @@ int glibme_tolower(int c)
   return c;
 }
 
-int glibme_toupper(int c)
+int toupper(int c)
 {
   if (c >= 'a' && c <= 'z') {
     return c - ('a' - 'A');
@@ -44,3 +45,5 @@ int glibme_toupper(int c)
 
   return c;
 }
+
+} // namespace glibme
