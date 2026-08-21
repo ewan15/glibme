@@ -1,0 +1,11 @@
+build/
+cmake-build-*/
+compile_commands.json
+*.a
+*.dylib
+*.so
+*.dll
+*.exe
+*.o
+*.obj
+*.dSYM/
