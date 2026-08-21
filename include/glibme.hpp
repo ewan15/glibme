@@ -21,6 +21,8 @@ void *memcpy(void *dest, const void *src, std::size_t n);
 void *memchr(const void *s, int c, std::size_t n);
 int memcmp(const void *lhs, const void *rhs, std::size_t n);
 
+int puts(const char *s);
+
 bool isalpha(int c);
 bool isdigit(int c);
 bool isalnum(int c);

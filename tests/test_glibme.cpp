@@ -78,10 +78,16 @@ static void test_ctype(void)
   assert(glibme::toupper('Z') == 'Z');
 }
 
+static void test_stdio(void)
+{
+  assert(glibme::puts("placeholder") == 0);
+}
+
 int main(void)
 {
   test_strings();
   test_memory();
   test_ctype();
+  test_stdio();
   return 0;
 }

@@ -18,6 +18,7 @@ include(GNUInstallDirs)
 
 set(GLIBME_SOURCES
   src/ctype.cpp
+  src/stdio.cpp
   src/string.cpp
 )
 
