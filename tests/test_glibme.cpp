@@ -81,6 +81,7 @@ static void test_ctype(void)
 static void test_stdio(void)
 {
   assert(glibme::puts("placeholder") == 0);
+  assert(glibme::putchar('x') == 'x');
 }
 
 int main(void)

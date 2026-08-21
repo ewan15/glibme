@@ -38,4 +38,15 @@ int puts(const char *s)
   return 0;
 }
 
+int putchar(int ch)
+{
+  char chr = static_cast<char>(ch);
+
+  if (!write_all(STDOUT_FILENO, &chr, 1)) {
+    return -1;
+  }
+
+  return static_cast<unsigned char>(chr);
+}
+
 } // namespace glibme

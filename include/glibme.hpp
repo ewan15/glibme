@@ -22,6 +22,7 @@ void *memchr(const void *s, int c, std::size_t n);
 int memcmp(const void *lhs, const void *rhs, std::size_t n);
 
 int puts(const char *s);
+int putchar(int ch);
 
 bool isalpha(int c);
 bool isdigit(int c);

@@ -9,7 +9,7 @@ Ordered from easiest to hardest.
 - [ ] `getchar`
 - [ ] `fputc`
 - [ ] `fputs`
-- [ ] `putchar`
+- [x] `putchar`
 - [x] `puts`
 - [ ] `perror`
 - [ ] `strerror`
