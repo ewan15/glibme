@@ -5,69 +5,69 @@ functions from scratch.
 
 ## Function Implementation Roadmap
 
-Ordered from hardest to easiest.
+Ordered from easiest to hardest.
 
-### Hardest
+### Easiest
 
-1. `malloc`, `free`, `calloc`, `realloc`
-2. `printf`, `fprintf`, `snprintf`, `vprintf`
-3. `scanf`, `sscanf`, `fscanf`
-4. `strtod`, `strtof`, `strtold`
-5. `strtol`, `strtoul`, `strtoll`, `strtoull`
-6. `qsort`
-7. `bsearch`
-8. `fopen`, `fclose`, `fread`, `fwrite`, `fseek`, `ftell`
-9. `getline`, `getdelim`
-10. `setjmp`, `longjmp`
+1. `srand`
+2. `rand`
+3. `getchar`
+4. `fputc`
+5. `fputs`
+6. `putchar`
+7. `puts`
+8. `perror`
+9. `strerror`
+10. `memchr`
 
-### Very Hard
+### Easy
 
-11. `memmove`
-12. `memcpy`
-13. `memcmp`
-14. `memset`
-15. `strtok`, `strtok_r`
-16. `regcomp`, `regexec`, `regfree`
-17. `glob`
-18. `fnmatch`
-19. `realpath`
-20. `getopt`, `getopt_long`
-
-### Medium-Hard
-
-21. `strstr`
-22. `strcasestr`
-23. `strchr`, `strrchr`
-24. `strpbrk`
-25. `strspn`, `strcspn`
-26. `strdup`, `strndup`
-27. `strcat`, `strncat`
-28. `strcpy`, `strncpy`
-29. `strcmp`, `strncmp`
-30. `strcasecmp`, `strncasecmp`
+11. `isxdigit`, `isprint`, `isspace`
+12. `isalnum`, `isdigit`, `isalpha`
+13. `tolower`, `toupper`
+14. `lldiv`, `ldiv`, `div`
+15. `llabs`, `labs`, `abs`
+16. `atoll`
+17. `atol`
+18. `atoi`
+19. `strnlen`
+20. `strlen`
 
 ### Medium
 
-31. `strlen`
-32. `strnlen`
-33. `atoi`
-34. `atol`
-35. `atoll`
-36. `abs`, `labs`, `llabs`
-37. `div`, `ldiv`, `lldiv`
-38. `toupper`, `tolower`
-39. `isalpha`, `isdigit`, `isalnum`
-40. `isspace`, `isprint`, `isxdigit`
+21. `strncasecmp`, `strcasecmp`
+22. `strncmp`, `strcmp`
+23. `strncpy`, `strcpy`
+24. `strncat`, `strcat`
+25. `strndup`, `strdup`
+26. `strcspn`, `strspn`
+27. `strpbrk`
+28. `strrchr`, `strchr`
+29. `strcasestr`
+30. `strstr`
 
-### Easier
+### Medium-Hard
 
-41. `memchr`
-42. `strerror`
-43. `perror`
-44. `puts`
-45. `putchar`
-46. `fputs`
-47. `fputc`
-48. `getchar`
-49. `rand`
-50. `srand`
+31. `getopt`, `getopt_long`
+32. `realpath`
+33. `fnmatch`
+34. `glob`
+35. `regcomp`, `regexec`, `regfree`
+36. `strtok`, `strtok_r`
+37. `memset`
+38. `memcmp`
+39. `memcpy`
+40. `memmove`
+
+### Hardest
+
+41. `setjmp`, `longjmp`
+42. `getline`, `getdelim`
+43. `fopen`, `fclose`, `fread`, `fwrite`, `fseek`, `ftell`
+44. `bsearch`
+45. `qsort`
+46. `strtol`, `strtoul`, `strtoll`, `strtoull`
+47. `strtod`, `strtof`, `strtold`
+48. `scanf`, `sscanf`, `fscanf`
+49. `printf`, `fprintf`, `snprintf`, `vprintf`
+50. `malloc`, `free`, `calloc`, `realloc`
