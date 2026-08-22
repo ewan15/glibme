@@ -49,4 +49,14 @@ int putchar(int ch)
   return static_cast<unsigned char>(chr);
 }
 
+int getchar(void)
+{
+  char ch;
+  ssize_t amount_read = read(STDIN_FILENO, &ch, 1);
+  if (amount_read <= 0) {
+    return -1;
+  }
+  return static_cast<unsigned char>(ch);
+}
+
 } // namespace glibme

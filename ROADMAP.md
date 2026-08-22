@@ -6,7 +6,7 @@ Ordered from easiest to hardest.
 
 - [ ] `srand`
 - [ ] `rand`
-- [ ] `getchar`
+- [x] `getchar`
 - [ ] `fputc`
 - [ ] `fputs`
 - [x] `putchar`

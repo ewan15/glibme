@@ -24,6 +24,8 @@ int memcmp(const void *lhs, const void *rhs, std::size_t n);
 int puts(const char *s);
 int putchar(int ch);
 
+int getchar(void);
+
 bool isalpha(int c);
 bool isdigit(int c);
 bool isalnum(int c);

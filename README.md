@@ -24,6 +24,18 @@ Run the test suite:
 ctest --test-dir build --output-on-failure
 ```
 
+Format the source:
+
+```sh
+./scripts/format.sh
+```
+
+Check formatting without changing files:
+
+```sh
+./scripts/format.sh --check
+```
+
 Install the library and headers:
 
 ```sh

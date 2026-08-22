@@ -19,8 +19,7 @@ bool isalnum(int c)
 
 bool isspace(int c)
 {
-  return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' ||
-         c == '\v';
+  return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' || c == '\v';
 }
 
 bool isxdigit(int c)
