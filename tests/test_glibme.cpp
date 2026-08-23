@@ -84,14 +84,54 @@ TEST(test_memmove2)
 
 TEST(test_ctype)
 {
-  assert(!glibme::isalpha('a'));
-  assert(!glibme::isdigit('9'));
-  assert(!glibme::isalnum('q'));
-  assert(!glibme::isspace('\n'));
-  assert(!glibme::isxdigit('f'));
-  assert(glibme::tolower('A') == 'A');
-  assert(glibme::toupper('z') == 'z');
+  assert(glibme::isalpha('a'));
+  assert(glibme::isalpha('Z'));
+  assert(!glibme::isalpha('0'));
+  assert(!glibme::isalpha('_'));
+
+  assert(glibme::isdigit('0'));
+  assert(glibme::isdigit('9'));
+  assert(!glibme::isdigit('/'));
+  assert(!glibme::isdigit(':'));
+  assert(!glibme::isdigit('a'));
+
+  assert(glibme::isalnum('a'));
+  assert(glibme::isalnum('Z'));
+  assert(glibme::isalnum('0'));
+  assert(!glibme::isalnum('_'));
+
+  assert(glibme::isspace(' '));
+  assert(glibme::isspace('\f'));
+  assert(glibme::isspace('\n'));
+  assert(glibme::isspace('\r'));
+  assert(glibme::isspace('\t'));
+  assert(glibme::isspace('\v'));
+  assert(!glibme::isspace('a'));
+
+  assert(glibme::isxdigit('0'));
+  assert(glibme::isxdigit('9'));
+  assert(glibme::isxdigit('a'));
+  assert(glibme::isxdigit('f'));
+  assert(glibme::isxdigit('A'));
+  assert(glibme::isxdigit('F'));
+  assert(!glibme::isxdigit('g'));
+  assert(!glibme::isxdigit('G'));
+
+  assert(glibme::isprint(' '));
+  assert(glibme::isprint('~'));
+  assert(glibme::isprint('A'));
+  assert(!glibme::isprint('\n'));
+  assert(!glibme::isprint(0x7f));
+
+  assert(glibme::tolower('A') == 'a');
+  assert(glibme::tolower('Z') == 'z');
+  assert(glibme::tolower('a') == 'a');
+  assert(glibme::tolower('0') == '0');
+
+  assert(glibme::toupper('a') == 'A');
+  assert(glibme::toupper('z') == 'Z');
   assert(glibme::toupper('Z') == 'Z');
+  assert(glibme::toupper('0') == '0');
 }
 
 TEST(test_stdio)

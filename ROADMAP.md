@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 7 / 90 complete
+Progress: 15 / 90 complete
 
 ```text
-[####----------------------------------------------] 7%
+[########------------------------------------------] 16%
 ```
 
 Ordered from easiest to hardest.
@@ -23,14 +23,14 @@ Ordered from easiest to hardest.
 
 ## Easy
 
-- [ ] `isxdigit`
-- [ ] `isprint`
-- [ ] `isspace`
-- [ ] `isalnum`
-- [ ] `isdigit`
-- [ ] `isalpha`
-- [ ] `tolower`
-- [ ] `toupper`
+- [x] `isxdigit`
+- [x] `isprint`
+- [x] `isspace`
+- [x] `isalnum`
+- [x] `isdigit`
+- [x] `isalpha`
+- [x] `tolower`
+- [x] `toupper`
 - [ ] `lldiv`
 - [ ] `ldiv`
 - [ ] `div`

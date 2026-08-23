@@ -32,6 +32,7 @@ bool isdigit(int c);
 bool isalnum(int c);
 bool isspace(int c);
 bool isxdigit(int c);
+bool isprint(int c);
 int tolower(int c);
 int toupper(int c);
 
