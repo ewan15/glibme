@@ -180,6 +180,21 @@ TEST(test_memset)
   std::cout << "memset passed!" << std::endl;
 }
 
+TEST(test_rand)
+{
+  glibme::srand(123);
+  int first = glibme::rand();
+  int second = glibme::rand();
+
+  assert(first >= 0);
+  assert(second >= 0);
+  assert(first != second);
+
+  glibme::srand(123);
+  assert(glibme::rand() == first);
+  assert(glibme::rand() == second);
+}
+
 int main(void)
 {
   for (const TestCase &test : tests()) {

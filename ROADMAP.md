@@ -1,17 +1,17 @@
 # Function Implementation Roadmap
 
-Progress: 17 / 90 complete
+Progress: 19 / 90 complete
 
 ```text
-[#########-----------------------------------------] 18%
+[###########---------------------------------------] 21%
 ```
 
 Ordered from easiest to hardest.
 
 ## Easiest
 
-- [ ] `srand`
-- [ ] `rand`
+- [x] `srand`
+- [x] `rand`
 - [x] `getchar`
 - [x] `fputc`
 - [x] `fputs`
