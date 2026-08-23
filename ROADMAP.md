@@ -1,5 +1,11 @@
 # Function Implementation Roadmap
 
+Progress: 22 / 90 complete
+
+```text
+[############--------------------------------------] 24%
+```
+
 Ordered from easiest to hardest.
 
 ## Easiest
