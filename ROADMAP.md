@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 5 / 90 complete
+Progress: 6 / 90 complete
 
 ```text
-[###-----------------------------------------------] 5%
+[###-----------------------------------------------] 6%
 ```
 
 Ordered from easiest to hardest.
@@ -75,7 +75,7 @@ Ordered from easiest to hardest.
 - [ ] `regfree`
 - [ ] `strtok`
 - [ ] `strtok_r`
-- [ ] `memset`
+- [x] `memset`
 - [ ] `memcmp`
 - [x] `memcpy`
 - [x] `memmove`

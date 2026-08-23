@@ -59,8 +59,10 @@ char *strncat(char *dest, const char *src, std::size_t n)
 
 void *memset(void *s, int c, std::size_t n)
 {
-  (void)c;
-  (void)n;
+  unsigned char *ss = static_cast<unsigned char *>(s);
+  for (std::size_t i = 0; i < n; ++i) {
+    ss[i] = static_cast<unsigned char>(c);
+  }
   return s;
 }
 
@@ -99,9 +101,13 @@ void *memmove(void *dest, const void *src, std::size_t n)
 
 void *memchr(const void *s, int c, std::size_t n)
 {
-  (void)s;
-  (void)c;
-  (void)n;
+  unsigned char v = static_cast<unsigned char>(c);
+
+  const unsigned char *vs = static_cast<const unsigned char *>(s);
+  for (std::size_t i = 0; i < n; ++i) {
+    if (vs[i] == v)
+      return const_cast<void *>(static_cast<const void *>(vs + i));
+  }
   return nullptr;
 }
 
