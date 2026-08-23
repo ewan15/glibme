@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 21 / 90 complete
+Progress: 24 / 90 complete
 
 ```text
-[############--------------------------------------] 23%
+[#############-------------------------------------] 27%
 ```
 
 Ordered from easiest to hardest.
@@ -31,9 +31,9 @@ Ordered from easiest to hardest.
 - [x] `isalpha`
 - [x] `tolower`
 - [x] `toupper`
-- [ ] `lldiv`
-- [ ] `ldiv`
-- [ ] `div`
+- [x] `lldiv`
+- [x] `ldiv`
+- [x] `div`
 - [ ] `llabs`
 - [ ] `labs`
 - [ ] `abs`

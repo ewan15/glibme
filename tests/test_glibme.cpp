@@ -198,6 +198,25 @@ TEST(test_rand)
   assert(glibme::rand() == second);
 }
 
+TEST(test_div)
+{
+  glibme::div_t positive = glibme::div(17, 5);
+  assert(positive.quot == 3);
+  assert(positive.rem == 2);
+
+  glibme::div_t negative = glibme::div(-17, 5);
+  assert(negative.quot == -3);
+  assert(negative.rem == -2);
+
+  glibme::ldiv_t long_result = glibme::ldiv(17L, -5L);
+  assert(long_result.quot == -3L);
+  assert(long_result.rem == 2L);
+
+  glibme::lldiv_t long_long_result = glibme::lldiv(-17LL, -5LL);
+  assert(long_long_result.quot == 3LL);
+  assert(long_long_result.rem == -2LL);
+}
+
 TEST(test_strerror)
 {
   assert(std::strcmp(glibme::strerror(EINVAL), "Invalid argument") == 0);
