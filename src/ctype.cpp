@@ -4,44 +4,41 @@ namespace glibme {
 
 bool isalpha(int c)
 {
-  return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+  (void)c;
+  return false;
 }
 
 bool isdigit(int c)
 {
-  return c >= '0' && c <= '9';
+  (void)c;
+  return false;
 }
 
 bool isalnum(int c)
 {
-  return isalpha(c) || isdigit(c);
+  (void)c;
+  return false;
 }
 
 bool isspace(int c)
 {
-  return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' || c == '\v';
+  (void)c;
+  return false;
 }
 
 bool isxdigit(int c)
 {
-  return isdigit(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f');
+  (void)c;
+  return false;
 }
 
 int tolower(int c)
 {
-  if (c >= 'A' && c <= 'Z') {
-    return c + ('a' - 'A');
-  }
-
   return c;
 }
 
 int toupper(int c)
 {
-  if (c >= 'a' && c <= 'z') {
-    return c - ('a' - 'A');
-  }
-
   return c;
 }
 

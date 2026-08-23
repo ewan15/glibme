@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 22 / 90 complete
+Progress: 4 / 90 complete
 
 ```text
-[############--------------------------------------] 24%
+[##------------------------------------------------] 4%
 ```
 
 Ordered from easiest to hardest.
@@ -19,18 +19,18 @@ Ordered from easiest to hardest.
 - [x] `puts`
 - [ ] `perror`
 - [ ] `strerror`
-- [x] `memchr`
+- [ ] `memchr`
 
 ## Easy
 
-- [x] `isxdigit`
+- [ ] `isxdigit`
 - [ ] `isprint`
-- [x] `isspace`
-- [x] `isalnum`
-- [x] `isdigit`
-- [x] `isalpha`
-- [x] `tolower`
-- [x] `toupper`
+- [ ] `isspace`
+- [ ] `isalnum`
+- [ ] `isdigit`
+- [ ] `isalpha`
+- [ ] `tolower`
+- [ ] `toupper`
 - [ ] `lldiv`
 - [ ] `ldiv`
 - [ ] `div`
@@ -40,19 +40,19 @@ Ordered from easiest to hardest.
 - [ ] `atoll`
 - [ ] `atol`
 - [ ] `atoi`
-- [x] `strnlen`
-- [x] `strlen`
+- [ ] `strnlen`
+- [ ] `strlen`
 
 ## Medium
 
 - [ ] `strncasecmp`
 - [ ] `strcasecmp`
-- [x] `strncmp`
-- [x] `strcmp`
-- [x] `strncpy`
-- [x] `strcpy`
-- [x] `strncat`
-- [x] `strcat`
+- [ ] `strncmp`
+- [ ] `strcmp`
+- [ ] `strncpy`
+- [ ] `strcpy`
+- [ ] `strncat`
+- [ ] `strcat`
 - [ ] `strndup`
 - [ ] `strdup`
 - [ ] `strcspn`
@@ -75,8 +75,8 @@ Ordered from easiest to hardest.
 - [ ] `regfree`
 - [ ] `strtok`
 - [ ] `strtok_r`
-- [x] `memset`
-- [x] `memcmp`
+- [ ] `memset`
+- [ ] `memcmp`
 - [x] `memcpy`
 - [ ] `memmove`
 
