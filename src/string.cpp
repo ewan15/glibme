@@ -105,8 +105,9 @@ void *memchr(const void *s, int c, std::size_t n)
 
   const unsigned char *vs = static_cast<const unsigned char *>(s);
   for (std::size_t i = 0; i < n; ++i) {
-    if (vs[i] == v)
+    if (vs[i] == v) {
       return const_cast<void *>(static_cast<const void *>(vs + i));
+    }
   }
   return nullptr;
 }

@@ -107,6 +107,8 @@ TEST(test_memchr)
   int target = 5;
   void *res = glibme::memchr(src, target, 6);
   assert(res == src + 4);
+  assert(glibme::memchr(src, 9, 6) == nullptr);
+  assert(glibme::memchr(src, 1, 0) == nullptr);
   std::cout << "memchr passed!" << std::endl;
 }
 

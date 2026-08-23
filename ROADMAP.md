@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 6 / 90 complete
+Progress: 7 / 90 complete
 
 ```text
-[###-----------------------------------------------] 6%
+[####----------------------------------------------] 7%
 ```
 
 Ordered from easiest to hardest.
@@ -19,7 +19,7 @@ Ordered from easiest to hardest.
 - [x] `puts`
 - [ ] `perror`
 - [ ] `strerror`
-- [ ] `memchr`
+- [x] `memchr`
 
 ## Easy
 
