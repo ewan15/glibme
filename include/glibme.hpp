@@ -2,6 +2,7 @@
 #define GLIBME_HPP
 
 #include <cstddef>
+#include <cstdio>
 
 namespace glibme {
 
@@ -21,11 +22,18 @@ void *memcpy(void *dest, const void *src, std::size_t n);
 void *memmove(void *dest, const void *src, std::size_t n);
 void *memchr(const void *s, int c, std::size_t n);
 int memcmp(const void *lhs, const void *rhs, std::size_t n);
+char *strerror(int errnum);
 
 int puts(const char *s);
 int putchar(int ch);
+int fputc(int ch, std::FILE *stream);
+int fputs(const char *s, std::FILE *stream);
+void perror(const char *s);
 
 int getchar(void);
+
+int rand(void);
+void srand(unsigned int seed);
 
 bool isalpha(int c);
 bool isdigit(int c);

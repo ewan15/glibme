@@ -19,34 +19,59 @@ static bool write_all(int fd, const char *s, std::size_t size)
   return true;
 }
 
-int puts(const char *s)
+int fputc(int ch, std::FILE *stream)
 {
+  if (stream == nullptr) {
+    return -1;
+  }
+
+  char chr = static_cast<char>(ch);
+
+  if (!write_all(fileno(stream), &chr, 1)) {
+    return -1;
+  }
+
+  return static_cast<unsigned char>(chr);
+}
+
+int fputs(const char *s, std::FILE *stream)
+{
+  if (stream == nullptr || s == nullptr) {
+    return -1;
+  }
+
   const char *p = s;
   while (*p != '\0') {
     ++p;
   }
   const auto size = static_cast<std::size_t>(p - s);
 
-  if (!write_all(STDOUT_FILENO, s, size)) {
-    return -1;
-  }
-
-  if (!write_all(STDOUT_FILENO, "\n", 1)) {
+  if (!write_all(fileno(stream), s, size)) {
     return -1;
   }
 
   return 0;
 }
 
-int putchar(int ch)
+int puts(const char *s)
 {
-  char chr = static_cast<char>(ch);
-
-  if (!write_all(STDOUT_FILENO, &chr, 1)) {
+  if (glibme::fputs(s, stdout) == -1) {
     return -1;
   }
+  if (glibme::fputc('\n', stdout) == -1) {
+    return -1;
+  }
+  return 0;
+}
 
-  return static_cast<unsigned char>(chr);
+int putchar(int ch)
+{
+  return glibme::fputc(ch, stdout);
+}
+
+void perror(const char *s)
+{
+  glibme::fputs(s, stderr);
 }
 
 int getchar(void)

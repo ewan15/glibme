@@ -120,4 +120,10 @@ int memcmp(const void *lhs, const void *rhs, std::size_t n)
   return 0;
 }
 
+char *strerror(int errnum)
+{
+  (void)errnum;
+  return nullptr;
+}
+
 } // namespace glibme

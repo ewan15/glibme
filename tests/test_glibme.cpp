@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include <cstddef>
+#include <cstdio>
 #include <iostream>
 #include <vector>
 
@@ -136,9 +137,26 @@ TEST(test_ctype)
 
 TEST(test_stdio)
 {
-  assert(glibme::puts("placeholder\n") == 0);
+  assert(glibme::puts("placeholder") == 0);
   assert(glibme::putchar('x') == 'x');
   assert(glibme::putchar('\n') == '\n');
+}
+
+TEST(test_file_stdio)
+{
+  std::FILE *file = std::tmpfile();
+  assert(file != nullptr);
+
+  assert(glibme::fputc('A', file) == 'A');
+  assert(glibme::fputs("bc", file) == 0);
+
+  std::rewind(file);
+  assert(std::fgetc(file) == 'A');
+  assert(std::fgetc(file) == 'b');
+  assert(std::fgetc(file) == 'c');
+  assert(std::fgetc(file) == EOF);
+
+  std::fclose(file);
 }
 
 TEST(test_memchr)

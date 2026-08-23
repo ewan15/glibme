@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 15 / 90 complete
+Progress: 17 / 90 complete
 
 ```text
-[########------------------------------------------] 16%
+[#########-----------------------------------------] 18%
 ```
 
 Ordered from easiest to hardest.
@@ -13,8 +13,8 @@ Ordered from easiest to hardest.
 - [ ] `srand`
 - [ ] `rand`
 - [x] `getchar`
-- [ ] `fputc`
-- [ ] `fputs`
+- [x] `fputc`
+- [x] `fputs`
 - [x] `putchar`
 - [x] `puts`
 - [ ] `perror`
