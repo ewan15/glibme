@@ -1,4 +1,5 @@
 #include "glibme.hpp"
+#include <functional>
 
 namespace glibme {
 
@@ -76,8 +77,23 @@ void *memcpy(void *dest, const void *src, std::size_t n)
 
 void *memmove(void *dest, const void *src, std::size_t n)
 {
-  (void)src;
-  (void)n;
+  auto *dest_ptr = static_cast<unsigned char *>(dest);
+  auto *src_ptr = static_cast<const unsigned char *>(src);
+
+  if (std::less<const void *>{}(src, dest)) {
+    // [0,1,2,3] src
+    //   [0,1,2,3] dest
+    for (std::size_t i = n; i > 0; --i) {
+      dest_ptr[i - 1] = src_ptr[i - 1];
+    }
+  } else {
+    //     [0,1,2,3] src
+    //   [0,1,2,3] dest
+    for (std::size_t i = 0; i < n; ++i) {
+      dest_ptr[i] = src_ptr[i];
+    }
+  }
+
   return dest;
 }
 

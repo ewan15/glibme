@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 4 / 90 complete
+Progress: 5 / 90 complete
 
 ```text
-[##------------------------------------------------] 4%
+[###-----------------------------------------------] 5%
 ```
 
 Ordered from easiest to hardest.
@@ -78,7 +78,7 @@ Ordered from easiest to hardest.
 - [ ] `memset`
 - [ ] `memcmp`
 - [x] `memcpy`
-- [ ] `memmove`
+- [x] `memmove`
 
 ## Hardest
 

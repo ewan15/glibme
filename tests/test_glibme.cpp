@@ -29,6 +29,32 @@ static void test_memory(void)
   assert(glibme::memchr(buffer, 0, 0) == nullptr);
 }
 
+static void test_memmove1(void)
+{
+  unsigned char src_dest[] = {1, 2, 3, 4, 5};
+  unsigned char *src = &src_dest[0];
+  unsigned char *dst = &src_dest[2];
+
+  glibme::memmove(dst, src, 3);
+
+  assert(src_dest[2] == 1);
+  assert(src_dest[3] == 2);
+  assert(src_dest[4] == 3);
+}
+
+static void test_memmove2(void)
+{
+  unsigned char src_dest[] = {1, 2, 3, 4, 5};
+  unsigned char *src = &src_dest[2];
+  unsigned char *dst = &src_dest[0];
+
+  glibme::memmove(dst, src, 3);
+
+  assert(src_dest[0] == 3);
+  assert(src_dest[1] == 4);
+  assert(src_dest[2] == 5);
+}
+
 static void test_ctype(void)
 {
   assert(!glibme::isalpha('a'));
@@ -53,5 +79,7 @@ int main(void)
   test_memory();
   test_ctype();
   test_stdio();
+  test_memmove1();
+  test_memmove2();
   return 0;
 }
