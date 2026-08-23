@@ -6,15 +6,22 @@ namespace glibme {
 
 std::size_t strlen(const char *s)
 {
-  (void)s;
-  return 0;
+  std::size_t len = 0;
+  while (*s != '\0') {
+    ++len;
+    ++s;
+  }
+  return len;
 }
 
 std::size_t strnlen(const char *s, std::size_t maxlen)
 {
-  (void)s;
-  (void)maxlen;
-  return 0;
+  std::size_t len = 0;
+  while (*s != '\0' && len < maxlen) {
+    ++len;
+    ++s;
+  }
+  return len;
 }
 
 int strcmp(const char *lhs, const char *rhs)

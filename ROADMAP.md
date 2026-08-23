@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 30 / 90 complete
+Progress: 32 / 90 complete
 
 ```text
-[#################---------------------------------] 33%
+[##################--------------------------------] 36%
 ```
 
 Ordered from easiest to hardest.
@@ -40,8 +40,8 @@ Ordered from easiest to hardest.
 - [x] `atoll`
 - [x] `atol`
 - [x] `atoi`
-- [ ] `strnlen`
-- [ ] `strlen`
+- [x] `strnlen`
+- [x] `strlen`
 
 ## Medium
 

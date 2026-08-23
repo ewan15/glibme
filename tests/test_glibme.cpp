@@ -44,6 +44,26 @@ TEST(test_strings)
   assert(glibme::strncat(buffer, "", 0) == buffer);
 }
 
+TEST(test_strlen)
+{
+  const char embedded_null[] = {'a', 'b', '\0', 'c', '\0'};
+
+  assert(glibme::strlen("") == 0);
+  assert(glibme::strlen("hello") == 5);
+  assert(glibme::strlen(embedded_null) == 2);
+}
+
+TEST(test_strnlen)
+{
+  const char embedded_null[] = {'a', 'b', '\0', 'c', '\0'};
+
+  assert(glibme::strnlen("", 5) == 0);
+  assert(glibme::strnlen("hello", 0) == 0);
+  assert(glibme::strnlen("hello", 3) == 3);
+  assert(glibme::strnlen("hello", 10) == 5);
+  assert(glibme::strnlen(embedded_null, 5) == 2);
+}
+
 TEST(test_memory)
 {
   unsigned char buffer[1] = {};
