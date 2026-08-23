@@ -1,4 +1,5 @@
 #include "glibme.hpp"
+#include <cerrno>
 #include <functional>
 
 namespace glibme {
@@ -122,8 +123,16 @@ int memcmp(const void *lhs, const void *rhs, std::size_t n)
 
 char *strerror(int errnum)
 {
-  (void)errnum;
-  return nullptr;
+  switch (errnum) {
+  case EINVAL:
+    return const_cast<char *>("Invalid argument");
+  case ENOENT:
+    return const_cast<char *>("No such file or directory");
+  case EACCES:
+    return const_cast<char *>("Permission denied");
+  default:
+    return const_cast<char *>("Unknown error");
+  }
 }
 
 } // namespace glibme

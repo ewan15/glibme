@@ -1,4 +1,5 @@
 #include "glibme.hpp"
+#include <cerrno>
 #include <cstddef>
 #include <unistd.h>
 
@@ -71,7 +72,13 @@ int putchar(int ch)
 
 void perror(const char *s)
 {
-  glibme::fputs(s, stderr);
+  if (s != nullptr && s[0] != '\0') {
+    glibme::fputs(s, stderr);
+    glibme::fputs(": ", stderr);
+  }
+
+  glibme::fputs(glibme::strerror(errno), stderr);
+  glibme::fputc('\n', stderr);
 }
 
 int getchar(void)

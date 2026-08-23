@@ -1,9 +1,12 @@
 #include "glibme.hpp"
 
 #include <assert.h>
+#include <cerrno>
 #include <cstddef>
 #include <cstdio>
+#include <cstring>
 #include <iostream>
+#include <unistd.h>
 #include <vector>
 
 using TestFn = void (*)();
@@ -193,6 +196,37 @@ TEST(test_rand)
   glibme::srand(123);
   assert(glibme::rand() == first);
   assert(glibme::rand() == second);
+}
+
+TEST(test_strerror)
+{
+  assert(std::strcmp(glibme::strerror(EINVAL), "Invalid argument") == 0);
+  assert(std::strcmp(glibme::strerror(ENOENT), "No such file or directory") == 0);
+  assert(std::strcmp(glibme::strerror(EACCES), "Permission denied") == 0);
+  assert(std::strcmp(glibme::strerror(-1), "Unknown error") == 0);
+}
+
+TEST(test_perror)
+{
+  std::FILE *file = std::tmpfile();
+  assert(file != nullptr);
+
+  int saved_stderr = dup(STDERR_FILENO);
+  assert(saved_stderr != -1);
+  assert(dup2(fileno(file), STDERR_FILENO) != -1);
+
+  errno = ENOENT;
+  glibme::perror("open");
+
+  assert(dup2(saved_stderr, STDERR_FILENO) != -1);
+  close(saved_stderr);
+
+  char buffer[64] = {};
+  std::rewind(file);
+  assert(std::fgets(buffer, sizeof(buffer), file) != nullptr);
+  assert(std::strcmp(buffer, "open: No such file or directory\n") == 0);
+
+  std::fclose(file);
 }
 
 int main(void)
