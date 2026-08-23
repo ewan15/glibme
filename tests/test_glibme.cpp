@@ -217,6 +217,21 @@ TEST(test_div)
   assert(long_long_result.rem == -2LL);
 }
 
+TEST(test_abs)
+{
+  assert(glibme::abs(-5) == 5);
+  assert(glibme::abs(0) == 0);
+  assert(glibme::abs(5) == 5);
+
+  assert(glibme::labs(-123456789L) == 123456789L);
+  assert(glibme::labs(0L) == 0L);
+  assert(glibme::labs(123456789L) == 123456789L);
+
+  assert(glibme::llabs(-1234567890123LL) == 1234567890123LL);
+  assert(glibme::llabs(0LL) == 0LL);
+  assert(glibme::llabs(1234567890123LL) == 1234567890123LL);
+}
+
 TEST(test_strerror)
 {
   assert(std::strcmp(glibme::strerror(EINVAL), "Invalid argument") == 0);
@@ -246,6 +261,30 @@ TEST(test_perror)
   assert(std::strcmp(buffer, "open: No such file or directory\n") == 0);
 
   std::fclose(file);
+}
+
+TEST(test_atoi)
+{
+  assert(glibme::atoi("-13213") == -13213);
+  assert(glibme::atoi(" \t\n\r\v\f+42") == 42);
+  assert(glibme::atoi("123abc") == 123);
+  assert(glibme::atoi("abc") == 0);
+}
+
+TEST(test_atol)
+{
+  assert(glibme::atol("-123456789") == -123456789L);
+  assert(glibme::atol(" \t\n\r\v\f+42") == 42L);
+  assert(glibme::atol("123abc") == 123L);
+  assert(glibme::atol("abc") == 0L);
+}
+
+TEST(test_atoll)
+{
+  assert(glibme::atoll("-1234567890123") == -1234567890123LL);
+  assert(glibme::atoll(" \t\n\r\v\f+42") == 42LL);
+  assert(glibme::atoll("123abc") == 123LL);
+  assert(glibme::atoll("abc") == 0LL);
 }
 
 int main(void)

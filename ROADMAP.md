@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 24 / 90 complete
+Progress: 30 / 90 complete
 
 ```text
-[#############-------------------------------------] 27%
+[#################---------------------------------] 33%
 ```
 
 Ordered from easiest to hardest.
@@ -34,12 +34,12 @@ Ordered from easiest to hardest.
 - [x] `lldiv`
 - [x] `ldiv`
 - [x] `div`
-- [ ] `llabs`
-- [ ] `labs`
-- [ ] `abs`
-- [ ] `atoll`
-- [ ] `atol`
-- [ ] `atoi`
+- [x] `llabs`
+- [x] `labs`
+- [x] `abs`
+- [x] `atoll`
+- [x] `atol`
+- [x] `atoi`
 - [ ] `strnlen`
 - [ ] `strlen`
 

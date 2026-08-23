@@ -18,38 +18,92 @@ void srand(unsigned int seed)
 
 int atoi(const char *nptr)
 {
-  (void)nptr;
-  return 0;
+  const char *ptr = nptr;
+  while (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' || *ptr == '\r' || *ptr == '\v' ||
+         *ptr == '\f') {
+    ++ptr;
+  }
+
+  int sign = 1;
+  if (*ptr == '+') {
+    ++ptr;
+  } else if (*ptr == '-') {
+    sign = -1;
+    ++ptr;
+  }
+
+  int result = 0;
+  while (*ptr >= '0' && *ptr <= '9') {
+    result = (result * 10) + ((*ptr) - '0');
+    ++ptr;
+  }
+
+  return result * sign;
 }
 
 long atol(const char *nptr)
 {
-  (void)nptr;
-  return 0;
+  const char *ptr = nptr;
+  while (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' || *ptr == '\r' || *ptr == '\v' ||
+         *ptr == '\f') {
+    ++ptr;
+  }
+
+  long sign = 1;
+  if (*ptr == '+') {
+    ++ptr;
+  } else if (*ptr == '-') {
+    sign = -1;
+    ++ptr;
+  }
+
+  long result = 0;
+  while (*ptr >= '0' && *ptr <= '9') {
+    result = (result * 10) + ((*ptr) - '0');
+    ++ptr;
+  }
+
+  return result * sign;
 }
 
 long long atoll(const char *nptr)
 {
-  (void)nptr;
-  return 0;
+  const char *ptr = nptr;
+  while (*ptr == ' ' || *ptr == '\t' || *ptr == '\n' || *ptr == '\r' || *ptr == '\v' ||
+         *ptr == '\f') {
+    ++ptr;
+  }
+
+  long long sign = 1;
+  if (*ptr == '+') {
+    ++ptr;
+  } else if (*ptr == '-') {
+    sign = -1;
+    ++ptr;
+  }
+
+  long long result = 0;
+  while (*ptr >= '0' && *ptr <= '9') {
+    result = (result * 10) + ((*ptr) - '0');
+    ++ptr;
+  }
+
+  return result * sign;
 }
 
 int abs(int n)
 {
-  (void)n;
-  return 0;
+  return n < 0 ? -n : n;
 }
 
 long labs(long n)
 {
-  (void)n;
-  return 0;
+  return n < 0 ? -n : n;
 }
 
 long long llabs(long long n)
 {
-  (void)n;
-  return 0;
+  return n < 0 ? -n : n;
 }
 
 div_t div(int numer, int denom)
