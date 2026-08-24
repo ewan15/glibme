@@ -26,30 +26,105 @@ std::size_t strnlen(const char *s, std::size_t maxlen)
 
 int strcmp(const char *lhs, const char *rhs)
 {
-  (void)lhs;
-  (void)rhs;
-  return 0;
+  while (*lhs != '\0' && *rhs != '\0') {
+    unsigned char l = (unsigned char)*lhs;
+    unsigned char r = (unsigned char)*rhs;
+
+    if (l != r)
+      return l < r ? -1 : 1;
+
+    ++lhs;
+    ++rhs;
+  }
+  unsigned char l = (unsigned char)*lhs;
+  unsigned char r = (unsigned char)*rhs;
+  return l < r ? -1 : l == r ? 0 : 1;
 }
 
 int strncmp(const char *lhs, const char *rhs, std::size_t n)
 {
-  (void)lhs;
-  (void)rhs;
-  (void)n;
+  while (n > 0) {
+    unsigned char l = (unsigned char)*lhs;
+    unsigned char r = (unsigned char)*rhs;
+
+    if (l != r)
+      return l < r ? -1 : 1;
+
+    if (l == '\0')
+      return 0;
+
+    ++lhs;
+    ++rhs;
+    --n;
+  }
+  return 0;
+}
+
+int strcasecmp(const char *lhs, const char *rhs)
+{
+  while (*lhs != '\0' && *rhs != '\0') {
+    unsigned char l = tolower((unsigned char)(*lhs));
+    unsigned char r = tolower((unsigned char)(*rhs));
+
+    if (l != r)
+      return l < r ? -1 : 1;
+
+    ++lhs;
+    ++rhs;
+  }
+  unsigned char l = tolower((unsigned char)(*lhs));
+  unsigned char r = tolower((unsigned char)(*rhs));
+  return l < r ? -1 : l == r ? 0 : 1;
+}
+
+int strncasecmp(const char *lhs, const char *rhs, std::size_t n)
+{
+  while (n > 0) {
+    unsigned char l = tolower((unsigned char)(*lhs));
+    unsigned char r = tolower((unsigned char)(*rhs));
+
+    if (l != r)
+      return l < r ? -1 : 1;
+
+    if (l == '\0')
+      return 0;
+
+    ++lhs;
+    ++rhs;
+    --n;
+  }
   return 0;
 }
 
 char *strcpy(char *dest, const char *src)
 {
-  (void)src;
-  return dest;
+  char *original = dest;
+  while (*src != '\0') {
+    *dest = *src;
+    ++src;
+    ++dest;
+  }
+  *dest = '\0';
+  return original;
 }
 
 char *strncpy(char *dest, const char *src, std::size_t n)
 {
-  (void)src;
-  (void)n;
-  return dest;
+  char *original = dest;
+  while (*src != '\0' && n > 0) {
+    *dest = *src;
+    ++src;
+    ++dest;
+    --n;
+  }
+
+  while (n > 0) {
+    *dest = '\0';
+    ++dest;
+    --n;
+  }
+
+  return original;
 }
 
 char *strcat(char *dest, const char *src)
@@ -63,6 +138,68 @@ char *strncat(char *dest, const char *src, std::size_t n)
   (void)src;
   (void)n;
   return dest;
+}
+
+char *strdup(const char *s)
+{
+  (void)s;
+  return nullptr;
+}
+
+char *strndup(const char *s, std::size_t n)
+{
+  (void)s;
+  (void)n;
+  return nullptr;
+}
+
+std::size_t strcspn(const char *s, const char *reject)
+{
+  (void)s;
+  (void)reject;
+  return 0;
+}
+
+std::size_t strspn(const char *s, const char *accept)
+{
+  (void)s;
+  (void)accept;
+  return 0;
+}
+
+char *strpbrk(const char *s, const char *accept)
+{
+  (void)s;
+  (void)accept;
+  return nullptr;
+}
+
+char *strrchr(const char *s, int c)
+{
+  (void)s;
+  (void)c;
+  return nullptr;
+}
+
+char *strchr(const char *s, int c)
+{
+  (void)s;
+  (void)c;
+  return nullptr;
+}
+
+char *strcasestr(const char *haystack, const char *needle)
+{
+  (void)haystack;
+  (void)needle;
+  return nullptr;
+}
+
+char *strstr(const char *haystack, const char *needle)
+{
+  (void)haystack;
+  (void)needle;
+  return nullptr;
 }
 
 void *memset(void *s, int c, std::size_t n)

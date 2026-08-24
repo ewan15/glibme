@@ -26,11 +26,22 @@ std::size_t strnlen(const char *s, std::size_t maxlen);
 
 int strcmp(const char *lhs, const char *rhs);
 int strncmp(const char *lhs, const char *rhs, std::size_t n);
+int strcasecmp(const char *lhs, const char *rhs);
+int strncasecmp(const char *lhs, const char *rhs, std::size_t n);
 
 char *strcpy(char *dest, const char *src);
 char *strncpy(char *dest, const char *src, std::size_t n);
 char *strcat(char *dest, const char *src);
 char *strncat(char *dest, const char *src, std::size_t n);
+char *strdup(const char *s);
+char *strndup(const char *s, std::size_t n);
+std::size_t strcspn(const char *s, const char *reject);
+std::size_t strspn(const char *s, const char *accept);
+char *strpbrk(const char *s, const char *accept);
+char *strrchr(const char *s, int c);
+char *strchr(const char *s, int c);
+char *strcasestr(const char *haystack, const char *needle);
+char *strstr(const char *haystack, const char *needle);
 
 void *memset(void *s, int c, std::size_t n);
 void *memcpy(void *dest, const void *src, std::size_t n);

@@ -64,6 +64,61 @@ TEST(test_strnlen)
   assert(glibme::strnlen(embedded_null, 5) == 2);
 }
 
+TEST(test_string_compare)
+{
+  assert(glibme::strcmp("", "") == 0);
+  assert(glibme::strcmp("abc", "abc") == 0);
+  assert(glibme::strcmp("abc", "abd") < 0);
+  assert(glibme::strcmp("abd", "abc") > 0);
+  assert(glibme::strcmp("abc", "abcd") < 0);
+  assert(glibme::strcmp("abcd", "abc") > 0);
+
+  assert(glibme::strncmp("abc", "abd", 2) == 0);
+  assert(glibme::strncmp("abc", "abd", 3) < 0);
+  assert(glibme::strncmp("abc", "xyz", 0) == 0);
+  assert(glibme::strncmp("abc", "abcd", 4) < 0);
+}
+
+TEST(test_string_case_compare)
+{
+  assert(glibme::strcasecmp("Hello", "hello") == 0);
+  assert(glibme::strcasecmp("abc", "ABD") < 0);
+  assert(glibme::strcasecmp("ABD", "abc") > 0);
+  assert(glibme::strcasecmp("abc", "ABCD") < 0);
+
+  assert(glibme::strncasecmp("Hello", "heLLo", 5) == 0);
+  assert(glibme::strncasecmp("Hello", "heLLo!", 5) == 0);
+  assert(glibme::strncasecmp("abc", "ABD", 3) < 0);
+  assert(glibme::strncasecmp("abc", "xyz", 0) == 0);
+}
+
+TEST(test_string_copy)
+{
+  char strcpy_dest[8] = {};
+  assert(glibme::strcpy(strcpy_dest, "hello!") == strcpy_dest);
+  assert(std::strcmp(strcpy_dest, "hello!") == 0);
+
+  char strncpy_short[8] = {};
+  assert(glibme::strncpy(strncpy_short, "hello", 3) == strncpy_short);
+  assert(strncpy_short[0] == 'h');
+  assert(strncpy_short[1] == 'e');
+  assert(strncpy_short[2] == 'l');
+  assert(strncpy_short[3] == '\0');
+
+  char strncpy_padded[8] = {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'};
+  assert(glibme::strncpy(strncpy_padded, "hi", 5) == strncpy_padded);
+  assert(strncpy_padded[0] == 'h');
+  assert(strncpy_padded[1] == 'i');
+  assert(strncpy_padded[2] == '\0');
+  assert(strncpy_padded[3] == '\0');
+  assert(strncpy_padded[4] == '\0');
+  assert(strncpy_padded[5] == 'x');
+
+  char unchanged[] = {'x'};
+  assert(glibme::strncpy(unchanged, "hi", 0) == unchanged);
+  assert(unchanged[0] == 'x');
+}
+
 TEST(test_memory)
 {
   unsigned char buffer[1] = {};
@@ -306,6 +361,20 @@ TEST(test_atoll)
   assert(glibme::atoll("123abc") == 123LL);
   assert(glibme::atoll("abc") == 0LL);
 }
+
+// TEST(test_strcpy)
+//{
+//   const char *src = "hello!";
+//   char dest[8];
+//   glibme::strcpy(dest, src);
+//   assert(dest[0] == 'h');
+//   assert(dest[1] == 'e');
+//   assert(dest[2] == 'l');
+//   assert(dest[3] == 'l');
+//   assert(dest[4] == 'o');
+//   assert(dest[5] == '!');
+//   assert(dest[6] == '\0');
+// }
 
 int main(void)
 {
