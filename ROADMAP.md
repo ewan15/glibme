@@ -1,9 +1,9 @@
 # Function Implementation Roadmap
 
-Progress: 39 / 90 complete
+Progress: 40 / 90 complete
 
 ```text
-[######################----------------------------] 43%
+[######################----------------------------] 44%
 ```
 
 Ordered from easiest to hardest.
@@ -51,7 +51,7 @@ Ordered from easiest to hardest.
 - [x] `strcmp`
 - [x] `strncpy`
 - [x] `strcpy`
-- [ ] `strncat`
+- [x] `strncat`
 - [x] `strcat`
 - [ ] `strndup`
 - [ ] `strdup`

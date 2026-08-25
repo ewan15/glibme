@@ -136,9 +136,17 @@ char *strcat(char *dest, const char *src)
 
 char *strncat(char *dest, const char *src, std::size_t n)
 {
-  (void)src;
-  (void)n;
-  return dest;
+  char *original = dest;
+  const auto dest_len = strlen(dest);
+  dest = dest + dest_len;
+  while (*src != '\0' && n > 0) {
+    *dest = *src;
+    ++dest;
+    ++src;
+    --n;
+  }
+  *dest = '\0';
+  return original;
 }
 
 char *strdup(const char *s)

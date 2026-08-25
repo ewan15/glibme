@@ -134,6 +134,29 @@ TEST(test_strcat)
   assert(std::strcmp(unchanged, "hi") == 0);
 }
 
+TEST(test_strncat)
+{
+  char dest[16] = "hello";
+  assert(glibme::strncat(dest, " world", 6) == dest);
+  assert(std::strcmp(dest, "hello world") == 0);
+
+  char truncated[16] = "hi";
+  assert(glibme::strncat(truncated, "abcdef", 3) == truncated);
+  assert(std::strcmp(truncated, "hiabc") == 0);
+
+  char no_padding[8] = {'h', 'i', '\0', 'x', 'x', 'x', 'x', '\0'};
+  assert(glibme::strncat(no_padding, "a", 3) == no_padding);
+  assert(no_padding[0] == 'h');
+  assert(no_padding[1] == 'i');
+  assert(no_padding[2] == 'a');
+  assert(no_padding[3] == '\0');
+  assert(no_padding[4] == 'x');
+
+  char unchanged[8] = "hi";
+  assert(glibme::strncat(unchanged, "abc", 0) == unchanged);
+  assert(std::strcmp(unchanged, "hi") == 0);
+}
+
 TEST(test_memory)
 {
   unsigned char buffer[1] = {};
