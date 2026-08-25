@@ -129,7 +129,8 @@ char *strncpy(char *dest, const char *src, std::size_t n)
 
 char *strcat(char *dest, const char *src)
 {
-  (void)src;
+  const auto dest_size = strlen(dest);
+  strcpy(dest + dest_size, src);
   return dest;
 }
 

@@ -119,6 +119,21 @@ TEST(test_string_copy)
   assert(unchanged[0] == 'x');
 }
 
+TEST(test_strcat)
+{
+  char dest[16] = "hello";
+  assert(glibme::strcat(dest, " world") == dest);
+  assert(std::strcmp(dest, "hello world") == 0);
+
+  char empty_dest[8] = "";
+  assert(glibme::strcat(empty_dest, "hi") == empty_dest);
+  assert(std::strcmp(empty_dest, "hi") == 0);
+
+  char unchanged[8] = "hi";
+  assert(glibme::strcat(unchanged, "") == unchanged);
+  assert(std::strcmp(unchanged, "hi") == 0);
+}
+
 TEST(test_memory)
 {
   unsigned char buffer[1] = {};
