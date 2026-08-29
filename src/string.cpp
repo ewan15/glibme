@@ -1,5 +1,7 @@
 #include "glibme.hpp"
+#include <array>
 #include <cerrno>
+#include <cstdlib>
 #include <functional>
 
 namespace glibme {
@@ -151,29 +153,73 @@ char *strncat(char *dest, const char *src, std::size_t n)
 
 char *strdup(const char *s)
 {
-  (void)s;
-  return nullptr;
+  std::size_t s_size = strlen(s) + 1;
+  char *ptr = static_cast<char *>(malloc(s_size));
+  if (ptr == nullptr)
+    return nullptr;
+  strcpy(ptr, s);
+  return ptr;
 }
 
 char *strndup(const char *s, std::size_t n)
 {
-  (void)s;
-  (void)n;
-  return nullptr;
+  std::size_t s_size = strnlen(s, n);
+  char *ptr = static_cast<char *>(malloc(s_size + 1));
+  if (ptr == nullptr)
+    return nullptr;
+  strncpy(ptr, s, s_size);
+  *(ptr + s_size) = '\0';
+  return ptr;
 }
 
 std::size_t strcspn(const char *s, const char *reject)
 {
-  (void)s;
-  (void)reject;
-  return 0;
+  std::array<unsigned char, 32> array = {};
+  const char *reject_ptr = reject;
+  while (*reject_ptr != '\0') {
+    std::size_t oid = static_cast<unsigned char>(*reject_ptr);
+    std::size_t leader = oid / 8;
+    std::size_t mod = oid % 8;
+    array[leader] |= (1 << mod);
+    ++reject_ptr;
+  }
+
+  const char *s_ptr = s;
+  while (*s_ptr != '\0') {
+    std::size_t oid = static_cast<unsigned char>(*s_ptr);
+    std::size_t leader = oid / 8;
+    std::size_t mod = oid % 8;
+    if (array[leader] & (1 << mod))
+      return s_ptr - s;
+    ++s_ptr;
+  }
+
+  return s_ptr - s;
 }
 
 std::size_t strspn(const char *s, const char *accept)
 {
-  (void)s;
-  (void)accept;
-  return 0;
+  std::array<unsigned char, 32> array = {};
+  const char *reject_ptr = accept;
+  while (*reject_ptr != '\0') {
+    std::size_t oid = static_cast<unsigned char>(*reject_ptr);
+    std::size_t leader = oid / 8;
+    std::size_t mod = oid % 8;
+    array[leader] |= (1 << mod);
+    ++reject_ptr;
+  }
+
+  const char *s_ptr = s;
+  while (*s_ptr != '\0') {
+    std::size_t oid = static_cast<unsigned char>(*s_ptr);
+    std::size_t leader = oid / 8;
+    std::size_t mod = oid % 8;
+    if (!(array[leader] & (1 << mod)))
+      return s_ptr - s;
+    ++s_ptr;
+  }
+
+  return s_ptr - s;
 }
 
 char *strpbrk(const char *s, const char *accept)

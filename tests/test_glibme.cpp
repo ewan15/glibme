@@ -4,6 +4,7 @@
 #include <cerrno>
 #include <cstddef>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <unistd.h>
@@ -155,6 +156,44 @@ TEST(test_strncat)
   char unchanged[8] = "hi";
   assert(glibme::strncat(unchanged, "abc", 0) == unchanged);
   assert(std::strcmp(unchanged, "hi") == 0);
+}
+
+TEST(test_string_dup)
+{
+  const char original[] = "hello";
+  char *copy = glibme::strdup(original);
+  assert(copy != nullptr);
+  assert(copy != original);
+  assert(std::strcmp(copy, "hello") == 0);
+  std::free(copy);
+
+  char *empty = glibme::strdup("");
+  assert(empty != nullptr);
+  assert(std::strcmp(empty, "") == 0);
+  std::free(empty);
+
+  char *limited = glibme::strndup("hello", 3);
+  assert(limited != nullptr);
+  assert(std::strcmp(limited, "hel") == 0);
+  std::free(limited);
+
+  char *short_source = glibme::strndup("hi", 5);
+  assert(short_source != nullptr);
+  assert(std::strcmp(short_source, "hi") == 0);
+  std::free(short_source);
+}
+
+TEST(test_string_span)
+{
+  assert(glibme::strcspn("12345", "2") == 1);
+  assert(glibme::strcspn("12345", "6") == 5);
+  assert(glibme::strcspn("12345", "1") == 0);
+  assert(glibme::strcspn("abc", "") == 3);
+
+  assert(glibme::strspn("abc123", "abc") == 3);
+  assert(glibme::strspn("123abc", "abc") == 0);
+  assert(glibme::strspn("aaaa", "a") == 4);
+  assert(glibme::strspn("abc", "") == 0);
 }
 
 TEST(test_memory)
